@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -54,7 +54,11 @@
       margin: 1.5rem auto; 
     }
 
-    .packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .packs { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 2rem; 
+    }
 
     .pack-card {
       background: var(--white);
@@ -64,7 +68,12 @@
       text-align: center;
     }
 
-    .pack-price { font-size: 2.6rem; font-weight: 700; color: var(--gray-dark); margin: 1rem 0; }
+    .pack-price { 
+      font-size: 2.6rem; 
+      font-weight: 700; 
+      color: var(--gray-dark); 
+      margin: 1rem 0; 
+    }
 
     .form-section {
       background: var(--beige-dark);
@@ -112,6 +121,25 @@
       border-top: 1px solid var(--gray-light);
       color: var(--gray);
     }
+
+    /* Estilo adicional para lista de premios */
+    .additional-prizes {
+      text-align: left;
+      max-width: 500px;
+      margin: 1.5rem auto 0;
+      font-size: 1.1rem;
+    }
+    .additional-prizes ul {
+      list-style: none;
+      padding: 0;
+    }
+    .additional-prizes li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .additional-prizes li:last-child {
+      border-bottom: none;
+    }
   </style>
 </head>
 <body>
@@ -153,14 +181,31 @@
     <section>
       <h2>Premios de la rifa</h2>
       <div class="packs">
+        <!-- Premio Principal -->
         <div class="pack-card">
-          <h3>Premio Principal</h3>
+          <h3>🏆 Premio Principal</h3>
           <div class="pack-price">JBL Go 3</div>
           <p class="pack-desc">Parlante portátil impermeable + Set de toallas</p>
         </div>
+
+        <!-- Premios Adicionales -->
         <div class="pack-card">
-          <h3>Premios adicionales</h3>
-          <p class="pack-desc">Más sorpresas según la cantidad de números vendidos</p>
+          <h3>🎁 Premios Adicionales</h3>
+          <p class="pack-desc" style="margin-bottom:1.5rem;">Se sortearán entre los participantes según la cantidad de números vendidos:</p>
+          
+          <div class="additional-prizes">
+            <ul>
+              <li>✅ Giftcard de $20.000 en Cencosud</li>
+              <li>✅ Kit de aseo</li>
+              <li>✅ Sesión de spa</li>
+              <li>✅ Combo 3 completos italianos + bebida 1.5 Lt</li>
+              <li>✅ Set de ollas</li>
+              <li>✅ Palomera</li>
+              <li>✅ Termo Stanley</li>
+              <li>✅ Audífonos AirPods</li>
+              <li>✅ Teclado inalámbrico + mouse</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
