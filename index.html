@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CrazyMangu - Stickers Digitales & Sorteo JBL Go 3</title>
-  <meta name="description" content="Compra stickers digitales y participa en el sorteo de un parlante JBL Go 3 nuevo con CrazyMangu"/>
+  <title>Rifa Gira a Brasil - CrazyMangu</title>
+  <meta name="description" content="Rifa solidaria organizada por CrazyMangu para la gira de estudio a Brasil"/>
   <style>
     :root {
       --beige: #f5f0e9;
@@ -35,46 +35,36 @@
     }
 
     .logo { font-size: 2.4rem; font-weight: 800; color: var(--gray-dark); letter-spacing: -1px; }
-    .tagline { font-size: 1.1rem; color: var(--gray); margin-top: 0.3rem; }
+    .tagline { font-size: 1.1rem; color: var(--gray); }
 
     main { max-width: 1100px; margin: 0 auto; padding: 3rem 5%; }
     section { margin-bottom: 5rem; }
-    h2 { font-size: 2.5rem; color: var(--gray-dark); margin-bottom: 1.5rem; text-align: center; }
+    h2 { font-size: 2.4rem; color: var(--gray-dark); margin-bottom: 1.5rem; text-align: center; }
 
     .intro { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
-    .intro p { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .intro p { font-size: 1.2rem; margin-bottom: 1.5rem; }
     .highlight { color: var(--gray-dark); font-weight: 600; }
+
+    .gallery img { 
+      width: 100%; 
+      max-width: 650px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+      display: block; 
+      margin: 1.5rem auto; 
+    }
 
     .packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
 
     .pack-card {
       background: var(--white);
       border-radius: 16px;
-      overflow: hidden;
       box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
       padding: 2rem 1.5rem;
+      text-align: center;
     }
 
-    .pack-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.12); }
-
-    .pack-price { font-size: 2.8rem; font-weight: 700; color: var(--gray-dark); margin: 1rem 0; }
-    .pack-desc { font-size: 1.1rem; color: var(--gray); margin-bottom: 1.5rem; }
-
-    .btn {
-      display: inline-block;
-      background: var(--gray-dark);
-      color: var(--white);
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover { background: var(--black); transform: scale(1.05); }
+    .pack-price { font-size: 2.6rem; font-weight: 700; color: var(--gray-dark); margin: 1rem 0; }
 
     .form-section {
       background: var(--beige-dark);
@@ -91,10 +81,9 @@
       padding: 1rem;
       border: 1px solid var(--gray-light);
       border-radius: 10px;
-      font-size: 1rem;
       background: var(--white);
     }
-    input:focus, textarea:focus, select:focus {
+    input:focus, textarea:focus {
       outline: none;
       border-color: var(--gray);
       box-shadow: 0 0 0 3px rgba(74,74,74,0.1);
@@ -109,11 +98,11 @@
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s;
     }
     button[type="submit"]:hover { background: var(--black); }
 
     .about { text-align: center; max-width: 800px; margin: 0 auto; }
+    .about ul { list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8; }
 
     footer {
       background: var(--white);
@@ -123,139 +112,125 @@
       border-top: 1px solid var(--gray-light);
       color: var(--gray);
     }
-
-    .contact-link { color: var(--gray-dark); font-weight: 600; text-decoration: none; }
-    .contact-link:hover { text-decoration: underline; }
-
-    .motiv { font-style: italic; color: var(--gray); text-align: center; margin: 1.5rem 0; font-size: 1.1rem; }
-
-    @media (max-width: 600px) {
-      h2 { font-size: 2rem; }
-      .pack-price { font-size: 2.4rem; }
-    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">CrazyMangu</div>
-    <div class="tagline">Stickers Digitales • Sorteo JBL Go 3</div>
+    <div class="tagline">Rifa Gira a Brasil</div>
   </header>
 
   <main>
 
     <section class="intro">
-      <h2>¡Gana un parlante JBL Go 3 nuevo!</h2>
-      <p>Compra cualquiera de nuestros packs de stickers digitales y participa automáticamente en el sorteo de **1 parlante JBL Go 3 nuevo**.</p>
-      <p class="highlight">¡Cada sticker que eliges te acerca un poquito más a tu JBL Go 3! ✨</p>
-      <p>Si apoyas comprando más packs, podríamos agregar más premios sorpresa 🎉</p>
-      <p>Todos los sorteos se realizan por Instagram @crazymangucl — ahí publicaremos la fecha, ganador y toda la info actualizada.</p>
+      <h2>¡Apóyanos a ir de gira de estudio a Brasil!</h2>
+      <p>Organizado por <strong>CrazyMangu</strong> junto al curso de 1° Medio B del Colegio Nahuelcura. Necesitamos fondos para nuestra gira de estudio a Brasil.</p>
+      <p class="highlight">Cada número de la rifa cuesta <strong>$1.000 CLP</strong>.</p>
+      <p class="motiv">¡Tu ayuda nos lleva a Brasil! 🇧🇷</p>
+      <p style="font-style:italic; color:var(--gray-dark); margin-top:1.5rem;">
+        Creada y gestionada por <strong>Vicente Moreno</strong>, alumno de 1° Medio B y fundador de CrazyMangu.
+      </p>
     </section>
 
-    <!-- NUEVA SECCIÓN DE COLORES -->
+    <!-- Imagen de gira -->
+    <section>
+      <h2>Así será nuestra gira de estudio</h2>
+      <img src="https://picsum.photos/id/1015/800/500" 
+           alt="Gira de estudio a Brasil" 
+           style="max-width:100%; border-radius:12px;">
+    </section>
+
+    <!-- Colores JBL -->
     <section>
       <h2>Colores del JBL Go 3</h2>
-      <p style="text-align:center; font-style:italic; color:var(--gray);">Disponible en varios colores vibrantes (azul, rosa, verde, rojo y más)</p>
-      <img src="https://jblonlinestore.com.my/cdn/shop/files/JBL-Go-3-Vibrant-New-Shades.jpg" 
-           alt="JBL Go 3 en distintos colores: azul, rosa, verde, rojo y más" 
-           style="max-width:100%; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.08); display:block; margin:1.5rem auto;">
+      <img src="https://www.jbl.com/on/demandware.static/-/Sites-JBL-US-Site/default/dw8f5c5e5f/images/GO3/GO3_All_Colors.jpg" 
+           alt="JBL Go 3 en diferentes colores" 
+           style="max-width:100%; border-radius:12px; display:block; margin:1.5rem auto;">
     </section>
 
+    <!-- Premios -->
     <section>
-      <h2>Elige tu pack</h2>
+      <h2>Premios de la rifa</h2>
       <div class="packs">
-
         <div class="pack-card">
-          <h3>Pack Básico</h3>
-          <div class="pack-price">1x $1.500</div>
-          <p class="pack-desc">Ideal para empezar</p>
-          <a href="https://pay.sumup.com/b2c/QWIJC12P" target="_blank" class="btn">Comprar →</a>
+          <h3>Premio Principal</h3>
+          <div class="pack-price">JBL Go 3</div>
+          <p class="pack-desc">Parlante portátil impermeable + Set de toallas</p>
         </div>
-
         <div class="pack-card">
-          <h3>Pack Popular</h3>
-          <div class="pack-price">2x $3.000</div>
-          <p class="pack-desc">Más variedad</p>
-          <a href="https://pay.sumup.com/b2c/Q2ZFUDVJ" target="_blank" class="btn">Comprar →</a>
+          <h3>Premios adicionales</h3>
+          <p class="pack-desc">Más sorpresas según la cantidad de números vendidos</p>
         </div>
-
-        <div class="pack-card">
-          <h3>Pack Recomendado</h3>
-          <div class="pack-price">3x $4.500</div>
-          <p class="pack-desc">Buen balance</p>
-          <a href="https://pay.sumup.com/b2c/Q7JRLI3H" target="_blank" class="btn">Comprar →</a>
-        </div>
-
-        <div class="pack-card">
-          <h3>Pack Deluxe</h3>
-          <div class="pack-price">4x $5.500</div>
-          <p class="pack-desc">Más stickers premium</p>
-          <a href="https://pay.sumup.com/b2c/QOT6VH5N" target="_blank" class="btn">Comprar →</a>
-        </div>
-
-        <div class="pack-card">
-          <h3>Pack Mega</h3>
-          <div class="pack-price">10x $14.000</div>
-          <p class="pack-desc">¡Máxima variedad!</p>
-          <a href="https://pay.sumup.com/b2c/QOP6VUAZ" target="_blank" class="btn">Comprar →</a>
-        </div>
-
-        <div class="pack-card">
-          <h3>Pack XXL</h3>
-          <div class="pack-price">20x $28.500</div>
-          <p class="pack-desc">El más completo</p>
-          <a href="https://pay.sumup.com/b2c/QJW2V6HX" target="_blank" class="btn">Comprar →</a>
-        </div>
-
       </div>
     </section>
 
+    <!-- Datos de transferencia -->
+    <section style="background:#fff; padding:2rem; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.08); max-width:700px; margin:0 auto 3rem;">
+      <h2 style="text-align:center;">Datos para transferir</h2>
+      <p style="text-align:center; font-size:1.15rem; margin:1.5rem 0;">
+        <strong>RUT:</strong> [INSERTE AQUÍ EL RUT]<br>
+        <strong>Nombre:</strong> [INSERTE AQUÍ EL NOMBRE COMPLETO]<br>
+        <strong>Número de teléfono:</strong> +56 9 3927 6187<br>
+        <strong>Banco:</strong> [INSERTE BANCO]<br>
+        <strong>Tipo de cuenta:</strong> [INSERTE TIPO DE CUENTA]<br>
+        <strong>Número de cuenta:</strong> [INSERTE NÚMERO DE CUENTA]
+      </p>
+      <p style="text-align:center; color:#d32f2f; font-weight:600;">
+        Una vez realizada la transferencia, envía el pantallazo por WhatsApp.
+      </p>
+    </section>
+
+    <!-- Formulario -->
     <section class="form-section">
-      <h2>Participa en el sorteo</h2>
-      <p style="text-align:center; margin-bottom:1rem;">Después de pagar, rellena este formulario con tus datos y el screenshot del comprobante SumUp.</p>
-      <p class="motiv">¡Tu participación podría ser la ganadora! ✨</p>
+      <h2>¡Participa en la rifa!</h2>
+      <p style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; line-height:1.6;">
+        Transfiere $1.000 por cada número que quieras.<br><br>
+        <strong>IMPORTANTE:</strong><br>
+        Envía el pantallazo del comprobante (PNG) directamente por WhatsApp a CrazyMangu haciendo clic en el botón de abajo.<br>
+        <strong>Sin el comprobante enviado por WhatsApp no podrás participar.</strong>
+      </p>
       
+      <div style="text-align:center; margin:2rem 0;">
+        <a href="https://wa.me/56939276187" target="_blank" 
+           style="display:inline-block; background:#25D366; color:white; padding:16px 32px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.2rem;">
+          📲 Enviar comprobante por WhatsApp
+        </a>
+      </div>
+
       <form action="https://formsubmit.co/crazymangu2026@gmail.com" method="POST">
         <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre...">
 
-        <label for="instagram">Usuario de Instagram</label>
-        <input type="text" id="instagram" name="instagram" required placeholder="@tuusuario">
+        <label for="numeros">Cantidad de números o números elegidos</label>
+        <input type="text" id="numeros" name="numeros" required placeholder="Ej: 5 números o números 12, 45, 67">
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
-
-        <label for="pack">Pack comprado</label>
-        <select id="pack" name="pack" required>
-          <option value="">Selecciona...</option>
-          <option value="1x1500">$1.500 (1x)</option>
-          <option value="2x3000">$3.000 (2x)</option>
-          <option value="3x4500">$4.500 (3x)</option>
-          <option value="4x5500">$5.500 (4x)</option>
-          <option value="10x14000">$14.000 (10x)</option>
-          <option value="20x28500">$28.500 (20x)</option>
-        </select>
-
-        <label for="comprobante">Link o descripción del comprobante</label>
-        <textarea id="comprobante" name="comprobante" rows="4" required placeholder="Ej: https://imgur.com/tu-screenshot..."></textarea>
-
-        <input type="hidden" name="_subject" value="Nueva participación sorteo JBL Go 3 - CrazyMangu">
+        <input type="hidden" name="_subject" value="Nueva participación Rifa Gira Brasil - CrazyMangu">
         <input type="hidden" name="_captcha" value="false">
 
-        <button type="submit">Enviar participación</button>
+        <button type="submit">Enviar datos de participación</button>
       </form>
     </section>
 
+    <!-- Representantes -->
     <section class="about">
-      <h2>Sobre nosotros</h2>
-      <p>CrazyMangu es una tienda creada y fundada por <strong>Vicente Moreno</strong>, apasionado por el arte digital y los stickers temáticos.</p>
-      <p>Ofrecemos packs de stickers digitales perfectos para GoodNotes, Notability, planners, WhatsApp y más. ¡Decora tu mundo digital con estilo!</p>
+      <h2>Representantes del curso</h2>
+      <ul>
+        <li>Antonella González</li>
+        <li>Antonella Carvallo</li>
+        <li>Sebastián Morales</li>
+        <li>Leon Acuña</li>
+        <li>Catalina Díaz</li>
+        <li>Emilio Aguilera</li>
+        <li><strong>Vicente Moreno</strong> – Creador y gestor de CrazyMangu</li>
+      </ul>
+      <p style="margin-top:2rem;">Todo el curso agradece tu apoyo para hacer posible esta gira de estudio.</p>
     </section>
 
   </main>
 
   <footer>
-    <p>¿Problemas o dudas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187" class="contact-link">+56 9 3927 6187</a></p>
+    <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187" class="contact-link">+56 9 3927 6187</a></p>
     <p style="margin-top:1rem;">© 2026 CrazyMangu - Todos los derechos reservados</p>
   </footer>
 
