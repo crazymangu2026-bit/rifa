@@ -24,35 +24,34 @@
       line-height: 1.6;
     }
 
-    <header>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; max-width: 1100px; margin: 0 auto;">
+<header style="background: white; padding: 1rem 5%; box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000;">
+  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto;">
     
-    <!-- Logo y título -->
+    <!-- Logo -->
     <div>
-      <div class="logo" style="font-size: 2.4rem; font-weight: 800; color: #4a4a4a; letter-spacing: -1px;">CrazyMangu</div>
-      <div class="tagline" style="font-size: 1.1rem; color: #8a8a8a;">Rifa Gira a Brasil</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: #2c3e50; letter-spacing: -1.5px;">CrazyMangu</div>
+      <div style="font-size: 1.15rem; color: #7f8c8d;">Rifa Gira a Brasil</div>
     </div>
 
-    <!-- Hamburguesa clásica de 3 líneas -->
-    <label for="menu-toggle" style="cursor: pointer; width: 35px; height: 30px; position: relative; display: flex; align-items: center;">
+    <!-- Hamburguesa mejorada -->
+    <label for="menu-toggle" class="hamburger" style="cursor: pointer; width: 40px; height: 35px; position: relative; z-index: 10;">
       <input type="checkbox" id="menu-toggle" style="display: none;">
       
-      <!-- Las 3 líneas -->
-      <span style="position: absolute; width: 100%; height: 3px; background: #4a4a4a; border-radius: 3px; transition: all 0.3s;"></span>
-      <span style="position: absolute; width: 100%; height: 3px; background: #4a4a4a; border-radius: 3px; transition: all 0.3s; top: 12px;"></span>
-      <span style="position: absolute; width: 100%; height: 3px; background: #4a4a4a; border-radius: 3px; transition: all 0.3s; top: 24px;"></span>
+      <!-- Las 3 líneas con animación -->
+      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 6px; transition: all 0.4s;"></span>
+      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 18px; transition: all 0.4s;"></span>
+      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 30px; transition: all 0.4s;"></span>
     </label>
-
-    <!-- Menú desplegable -->
-    <nav id="mobile-menu" style="display: none; position: absolute; right: 20px; top: 85px; background: white; border-radius: 16px; box-shadow: 0 10px 35px rgba(0,0,0,0.15); padding: 15px 0; min-width: 220px; z-index: 1000;">
-      <a href="../" style="display: block; padding: 14px 25px; text-decoration: none; color: #4a4a4a; font-size: 1.1rem;">🏠 Inicio</a>
-      <a href="como-participar/" style="display: block; padding: 14px 25px; text-decoration: none; color: #4a4a4a; font-size: 1.1rem;">📋 Cómo Participar</a>
-      <a href="como-vender/" style="display: block; padding: 14px 25px; text-decoration: none; color: #4a4a4a; font-size: 1.1rem;">👥 Manual para Vendedores</a>
-      <a href="terminos/" style="display: block; padding: 14px 25px; text-decoration: none; color: #4a4a4a; font-size: 1.1rem;">📜 Términos y Condiciones</a>
-    </nav>
   </div>
-</header>
 
+  <!-- Menú desplegable bonito -->
+  <nav id="mobile-menu" style="display: none; position: absolute; right: 5%; top: 85px; background: white; border-radius: 18px; box-shadow: 0 15px 40px rgba(0,0,0,0.18); padding: 20px 0; min-width: 240px; z-index: 999;">
+    <a href="../" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">🏠 Inicio</a>
+    <a href="como-participar/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">📋 Cómo Participar</a>
+    <a href="como-vender/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">👥 Manual para Vendedores</a>
+    <a href="terminos/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">📜 Términos y Condiciones</a>
+  </nav>
+</header>
     .logo { font-size: 2.4rem; font-weight: 800; color: var(--gray-dark); letter-spacing: -1px; }
     .tagline { font-size: 1.1rem; color: var(--gray); }
 
@@ -354,20 +353,32 @@
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const lines = document.querySelectorAll('.line');
 
   toggle.addEventListener('change', () => {
     if (toggle.checked) {
       menu.style.display = 'block';
+      // Animación a "X"
+      lines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+      lines[1].style.opacity = '0';
+      lines[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
     } else {
       menu.style.display = 'none';
+      // Volver a hamburguesa
+      lines[0].style.transform = 'none';
+      lines[1].style.opacity = '1';
+      lines[2].style.transform = 'none';
     }
   });
 
-  // Cerrar el menú si se hace clic fuera del header
+  // Cerrar al tocar fuera
   document.addEventListener('click', (e) => {
     if (!e.target.closest('header')) {
       toggle.checked = false;
       menu.style.display = 'none';
+      lines[0].style.transform = 'none';
+      lines[1].style.opacity = '1';
+      lines[2].style.transform = 'none';
     }
   });
 </script>
