@@ -24,34 +24,6 @@
       line-height: 1.6;
     }
 
-<header style="background: white; padding: 1rem 5%; box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000;">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto;">
-    
-    <!-- Logo -->
-    <div>
-      <div style="font-size: 2.5rem; font-weight: 800; color: #2c3e50; letter-spacing: -1.5px;">CrazyMangu</div>
-      <div style="font-size: 1.15rem; color: #7f8c8d;">Rifa Gira a Brasil</div>
-    </div>
-
-    <!-- Hamburguesa mejorada -->
-    <label for="menu-toggle" class="hamburger" style="cursor: pointer; width: 40px; height: 35px; position: relative; z-index: 10;">
-      <input type="checkbox" id="menu-toggle" style="display: none;">
-      
-      <!-- Las 3 líneas con animación -->
-      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 6px; transition: all 0.4s;"></span>
-      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 18px; transition: all 0.4s;"></span>
-      <span class="line" style="position: absolute; width: 35px; height: 4px; background: #2c3e50; border-radius: 3px; top: 30px; transition: all 0.4s;"></span>
-    </label>
-  </div>
-
-  <!-- Menú desplegable bonito -->
-  <nav id="mobile-menu" style="display: none; position: absolute; right: 5%; top: 85px; background: white; border-radius: 18px; box-shadow: 0 15px 40px rgba(0,0,0,0.18); padding: 20px 0; min-width: 240px; z-index: 999;">
-    <a href="../" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">🏠 Inicio</a>
-    <a href="como-participar/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">📋 Cómo Participar</a>
-    <a href="como-vender/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">👥 Manual para Vendedores</a>
-    <a href="terminos/" style="display: block; padding: 16px 25px; color: #2c3e50; text-decoration: none; font-size: 1.15rem;">📜 Términos y Condiciones</a>
-  </nav>
-</header>
     .logo { font-size: 2.4rem; font-weight: 800; color: var(--gray-dark); letter-spacing: -1px; }
     .tagline { font-size: 1.1rem; color: var(--gray); }
 
@@ -62,15 +34,6 @@
     .intro { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
     .intro p { font-size: 1.2rem; margin-bottom: 1.5rem; }
     .highlight { color: var(--gray-dark); font-weight: 600; }
-
-    .gallery img { 
-      width: 100%; 
-      max-width: 650px; 
-      border-radius: 12px; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-      display: block; 
-      margin: 1.5rem auto; 
-    }
 
     .packs { 
       display: grid; 
@@ -139,32 +102,36 @@
       border-top: 1px solid var(--gray-light);
       color: var(--gray);
     }
-
-    /* Estilo adicional para lista de premios */
-    .additional-prizes {
-      text-align: left;
-      max-width: 500px;
-      margin: 1.5rem auto 0;
-      font-size: 1.1rem;
-    }
-    .additional-prizes ul {
-      list-style: none;
-      padding: 0;
-    }
-    .additional-prizes li {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--gray-light);
-    }
-    .additional-prizes li:last-child {
-      border-bottom: none;
-    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">CrazyMangu</div>
-    <div class="tagline">Rifa Gira a Brasil</div>
+  <!-- HEADER CON HAMBURGUESA -->
+  <header style="background: white; padding: 1.2rem 5%; box-shadow: 0 3px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000;">
+    <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto;">
+      
+      <!-- Logo -->
+      <div>
+        <div style="font-size: 2.6rem; font-weight: 800; color: #2c3e50;">CrazyMangu</div>
+        <div style="font-size: 1.15rem; color: #7f8c8d;">Rifa Gira a Brasil</div>
+      </div>
+
+      <!-- Hamburguesa de 3 líneas -->
+      <label for="menu-toggle" style="cursor: pointer; width: 42px; height: 36px; position: relative;">
+        <input type="checkbox" id="menu-toggle" style="display: none;">
+        <span style="position: absolute; left: 0; width: 35px; height: 4px; background: #2c3e50; border-radius: 4px; top: 6px; transition: 0.4s;"></span>
+        <span style="position: absolute; left: 0; width: 35px; height: 4px; background: #2c3e50; border-radius: 4px; top: 18px; transition: 0.4s;"></span>
+        <span style="position: absolute; left: 0; width: 35px; height: 4px; background: #2c3e50; border-radius: 4px; top: 30px; transition: 0.4s;"></span>
+      </label>
+    </div>
+
+    <!-- Menú desplegable -->
+    <nav id="mobile-menu" style="display: none; background: white; margin: 12px 5% 0; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 15px 0;">
+      <a href="../" style="display:block; padding:15px 25px; color:#2c3e50; text-decoration:none; font-size:1.15rem;">🏠 Inicio</a>
+      <a href="como-participar/" style="display:block; padding:15px 25px; color:#2c3e50; text-decoration:none; font-size:1.15rem;">📋 Cómo Participar</a>
+      <a href="como-vender/" style="display:block; padding:15px 25px; color:#2c3e50; text-decoration:none; font-size:1.15rem;">👥 Manual para Vendedores</a>
+      <a href="terminos/" style="display:block; padding:15px 25px; color:#2c3e50; text-decoration:none; font-size:1.15rem;">📜 Términos y Condiciones</a>
+    </nav>
   </header>
 
   <main>
@@ -199,18 +166,15 @@
     <section>
       <h2>Premios de la rifa</h2>
       <div class="packs">
-        <!-- Premio Principal -->
         <div class="pack-card">
           <h3>🏆 Premio Principal</h3>
           <div class="pack-price">JBL Go 3</div>
           <p class="pack-desc">Parlante portátil impermeable + Set de toallas</p>
         </div>
 
-        <!-- Premios Adicionales -->
         <div class="pack-card">
           <h3>🎁 Premios Adicionales</h3>
           <p class="pack-desc" style="margin-bottom:1.5rem;">Se sortearán entre los participantes según la cantidad de números vendidos:</p>
-          
           <div class="additional-prizes">
             <ul>
               <li>✅ Giftcard de $20.000 en Cencosud</li>
@@ -227,7 +191,8 @@
         </div>
       </div>
     </section>
-        <!-- Botón Términos y Condiciones (versión recomendada) -->
+
+    <!-- Botón Términos y Condiciones -->
     <div style="text-align: center; margin: 65px 0 75px 0; padding: 0 20px;">
       <a href="terminos/" 
          style="display: inline-block; background: #34495e; color: white; padding: 18px 45px; 
@@ -236,23 +201,24 @@
         📜 Ver Términos y Condiciones
       </a>
     </div>
+
     <!-- Datos de transferencia -->
     <section style="background:#fff; padding:2rem; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.08); max-width:700px; margin:0 auto 3rem;">
       <h2 style="text-align:center;">Datos para transferir</h2>
       <p style="text-align:center; font-size:1.15rem; margin:1.5rem 0;">
         <strong>Nombre:</strong> Ayleen Barahona Olivares<br>
-        <strong>Rut:</strong> 150251427<br>
-        <strong>banco:</strong> Banco Falabella<br>
-        <strong>tipo de banco:</strong> Cuenta corriente<br>
-        <strong>Numero de cuenta:</strong>:</strong> 019843395912<br>
-        <strong>correo:</strong> crazymangu2026@gmail.com
+        <strong>RUT:</strong> 150251427<br>
+        <strong>Banco:</strong> Banco Falabella<br>
+        <strong>Tipo de cuenta:</strong> Cuenta Corriente<br>
+        <strong>Número de cuenta:</strong> 019843395912<br>
+        <strong>Correo:</strong> crazymangu2026@gmail.com
       </p>
       <p style="text-align:center; color:#d32f2f; font-weight:600;">
         Una vez realizada la transferencia, envía el pantallazo por WhatsApp.
       </p>
     </section>
 
-    <!-- Formulario ACTUALIZADO con opción Efectivo o Transferencia -->
+    <!-- Formulario -->
     <section class="form-section">
       <h2>¡Participa en la rifa!</h2>
       <p style="text-align:center; margin-bottom:1.8rem; font-size:1.12rem; line-height:1.6;">
@@ -260,7 +226,6 @@
         Puedes pagar en <strong>efectivo</strong> (con un vendedor del curso) o por <strong>transferencia bancaria</strong>.
       </p>
       
-      <!-- Botón WhatsApp destacado -->
       <div style="text-align:center; margin:2.5rem 0;">
         <a href="https://wa.me/56939276187" target="_blank" 
            style="display:inline-block; background:#25D366; color:white; padding:16px 36px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.25rem; box-shadow: 0 4px 15px rgba(37,211,102,0.3);">
@@ -268,9 +233,9 @@
         </a>
       </div>
 
-<form action="https://formsubmit.co/crazymangu2026@gmail.com" 
-      method="POST"
-      onsubmit="setTimeout(() => { window.location.href = 'gracias/'; }, 800);">
+      <form action="https://formsubmit.co/crazymangu2026@gmail.com" 
+            method="POST"
+            onsubmit="setTimeout(() => { window.location.href = 'gracias/'; }, 800);">
         <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo...">
 
@@ -292,7 +257,7 @@
 
         <label for="comprobante">Comprobante o comentario (opcional)</label>
         <textarea id="comprobante" name="comprobante" rows="3" 
-                  placeholder="Si pagaste y quieres un numero personalizado ponlo por aqui y si deseas uno al azar, puedes dejarlo en blanco."></textarea>
+                  placeholder="Si pagaste y quieres un numero personalizado ponlo por aqui..."></textarea>
 
         <input type="hidden" name="_subject" value="Nueva participación Rifa Gira Brasil - CrazyMangu">
         <input type="hidden" name="_captcha" value="false">
@@ -307,14 +272,12 @@
       <p style="text-align: center; font-size: 1.15rem; max-width: 800px; margin: 0 auto 2rem;">
         Somos el curso de <strong>1° Medio B</strong> del Colegio Nahuelcura. 
         Estamos organizando esta rifa solidaria para poder financiar nuestra gira de estudio a Brasil. 
-        Es una oportunidad única para conocer otro país, aprender y crear recuerdos juntos como curso. 
         ¡Tu apoyo nos ayuda a hacer realidad este sueño! 🇧🇷
       </p>
       
-      <!-- Foto del curso -->
       <div style="text-align: center; margin: 2rem 0;">
         <img src="https://share.icloud.com/photos/0afc3GGsiy6gXEgAbyMbo0GGA" 
-             alt="Foto del curso 1° Medio B - Colegio Nahuelcura" 
+             alt="Foto del curso" 
              style="max-width: 100%; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
       </div>
       
@@ -333,54 +296,37 @@
 
     <!-- Botones a subpáginas -->
     <div style="text-align: center; margin: 30px 0 40px 0; padding: 0 20px;">
-      <a href="como-participar/" 
-         style="display: block; background: #3498db; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-          📋 Cómo Participar (detallado)
-      </a>
-      
-      <a href="como-vender/" 
-         style="display: block; background: #27ae60; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-          👥 Manual para Vendedores (compañeros)
-      </a>
+      <a href="como-participar/" style="display: block; background: #3498db; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">📋 Cómo Participar (detallado)</a>
+      <a href="como-vender/" style="display: block; background: #27ae60; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">👥 Manual para Vendedores (compañeros)</a>
     </div>
 
   </main>
 
   <footer>
-    <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187" class="contact-link">+56 9 3927 6187</a></p>
+    <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187">+56 9 3927 6187</a></p>
     <p style="margin-top:1rem;">© 2026 CrazyMangu - Todos los derechos reservados</p>
   </footer>
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const lines = document.querySelectorAll('.line');
 
-  toggle.addEventListener('change', () => {
-    if (toggle.checked) {
-      menu.style.display = 'block';
-      // Animación a "X"
-      lines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-      lines[1].style.opacity = '0';
-      lines[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
-    } else {
-      menu.style.display = 'none';
-      // Volver a hamburguesa
-      lines[0].style.transform = 'none';
-      lines[1].style.opacity = '1';
-      lines[2].style.transform = 'none';
-    }
-  });
+  <!-- Script del menú hamburguesa -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
 
-  // Cerrar al tocar fuera
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('header')) {
-      toggle.checked = false;
-      menu.style.display = 'none';
-      lines[0].style.transform = 'none';
-      lines[1].style.opacity = '1';
-      lines[2].style.transform = 'none';
-    }
-  });
-</script>
+    toggle.addEventListener('change', function() {
+      if (this.checked) {
+        menu.style.display = 'block';
+      } else {
+        menu.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('header')) {
+        toggle.checked = false;
+        menu.style.display = 'none';
+      }
+    });
+  </script>
+
 </body>
 </html>
