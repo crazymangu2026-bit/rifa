@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MangoLango - El Gato de la Rifa</title>
+  <style>
+    :root {
+      --orange: #ff9800;
+      --dark-orange: #e67e00;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #fffaf0, #ffe0b2);
+      color: #333;
+      min-height: 100vh;
+    }
+    header {
+      background: white;
+      padding: 2rem 5%;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .logo-cat {
+      font-size: 5rem;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: var(--dark-orange);
+      font-size: 2.8rem;
+    }
+    .tag {
+      color: #555;
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 12px 28px;
+      background: #34495e;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+    }
+
+    /* Contenedor del chatbot de SiteSpeakAI */
+    #sitespeak-container {
+      height: 75vh;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(255, 152, 0, 0.3);
+      border: 6px solid var(--orange);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-cat">🐱</div>
+    <h1>MangoLango</h1>
+    <p class="tag">
+      El gato naranja creado en memoria de Mango.<br>
+      Me escapé el día que me llevaban a vacunar y Vicente me trajo de vuelta como gato virtual para acompañar la rifa y la gira a Brasil.
+    </p>
+  </header>
+
+  <main>
+    <a href="../" class="back-btn">← Volver a la página de la rifa</a>
+
+    <!-- Aquí va el chatbot de SiteSpeakAI -->
+    <div id="sitespeak-container">
+      <!-- SiteSpeakAI cargará el chat aquí automáticamente -->
+    </div>
+  </main>
+
+  <footer>
+    © 2026 CrazyMangu • MangoLango creado con cariño por Vicente Moreno
+  </footer>
+
+  <!-- ==================== CÓDIGO DE SITESPEAKAI ==================== -->
+  <!-- SiteSpeakAI - Add ChatGPT to your website -->
+  <script type="text/javascript">
+    (function(){
+      d=document;
+      s=d.createElement("script");
+      s.src="https://sitespeak.ai/chatbots/bc968475-4831-4c08-b1a6-c79f82de9c24.js";
+      s.async=1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
+  <!-- / SiteSpeakAI -->
+
+</body>
+</html>
