@@ -1,361 +1,921 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rifa Gira a Brasil - CrazyMangu</title>
-  <meta name="description" content="Rifa solidaria organizada por CrazyMangu para la gira de estudio a Brasil"/>
+  <title>Rifa Gira a Bariloche — Mangu</title>
+  <meta name="description" content="Rifa solidaria organizada por Mangu para la gira de estudio a Bariloche"/>
+  <meta name="theme-color" content="#f0ebe0">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* Force consistent background — never adapt to dark mode */
     :root {
-      --beige: #f5f0e9;
-      --beige-dark: #e6ded4;
-      --gray-light: #e0e0e0;
-      --gray: #8a8a8a;
-      --gray-dark: #4a4a4a;
-      --white: #ffffff;
-      --black: #1a1a1a;
-      --accent: #2c3e50;
+      color-scheme: light only;
     }
 
-    * { 
-      margin:0; 
-      padding:0; 
-      box-sizing:border-box; 
-    }
+```
+html, body {
+  background-color: #f0ebe0 !important;
+}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--beige);
-      color: var(--gray-dark);
-      line-height: 1.8;
-    }
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #f0ebe0 !important;
+    color: #2a2a2a !important;
+  }
+}
 
-    /* ==================== HEADER Y HAMBURGUESA ==================== */
-    header {
-      background: white;
-      padding: 1.2rem 5%;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+:root {
+  --cream: #faf7f2;
+  --cream-dark: #f0ebe0;
+  --sand: #e8dece;
+  --terra: #c4855a;
+  --terra-dark: #a36544;
+  --forest: #3a5a40;
+  --forest-light: #4d7a55;
+  --charcoal: #2a2a2a;
+  --mid: #6b6b6b;
+  --white: #ffffff;
+  --snow: #f9f9f9;
+}
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    .logo {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: #2c3e50;
-      letter-spacing: -1px;
-    }
+html { scroll-behavior: smooth; }
 
-    .tagline {
-      font-size: 1.15rem;
-      color: #7f8c8d;
-    }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f0ebe0;
+  color: var(--charcoal);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
 
-    /* Hamburguesa con SOLO 2 líneas: centro y abajo (quitada la de arriba) */
-    .hamburger {
-      cursor: pointer;
-      width: 42px;
-      height: 36px;
-      position: relative;
-    }
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #2a3a2e 0%, #3a5a40 45%, #c4855a 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 5% 80px;
+  overflow: hidden;
+}
 
-    .hamburger input { display: none; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(196,133,90,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(58,90,64,0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
 
-    .hamburger span {
-      position: absolute;
-      left: 0;
-      width: 35px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 4px;
-      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-    }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+  animation: fadeDown 0.8s ease both;
+}
 
-    .hamburger span:nth-child(1) { top: 16px; }   /* Línea del centro */
-    .hamburger span:nth-child(2) { top: 26px; }   /* Línea de abajo */
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  animation: fadeDown 0.8s 0.15s ease both;
+}
 
-    /* Animación a X */
-    .hamburger input:checked ~ span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 6px);
-    }
-    .hamburger input:checked ~ span:nth-child(2) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
+.hero h1 span {
+  color: #f5c89a;
+  display: block;
+}
 
-    /* Menú móvil */
-    #mobile-menu {
-      background: white;
-      margin: 12px 5% 0;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: all 0.4s ease;
-    }
+.hero-sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  color: rgba(255,255,255,0.82);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  animation: fadeDown 0.8s 0.3s ease both;
+}
 
-    #mobile-menu.show {
-      max-height: 420px;
-      opacity: 1;
-    }
+.hero-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  padding: 14px 32px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  animation: fadeDown 0.8s 0.4s ease both;
+}
 
-    #mobile-menu a {
-      display: block;
-      padding: 16px 25px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 1.15rem;
-      transition: all 0.3s ease;
-    }
+.hero-price strong {
+  font-size: 1.4rem;
+  color: #f5c89a;
+}
 
-    #mobile-menu a:hover {
-      background: var(--beige);
-      padding-left: 35px;
-    }
+.hero-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--terra);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 50px;
+  margin-bottom: 3rem;
+  animation: fadeDown 0.8s 0.5s ease both;
+  box-shadow: 0 8px 30px rgba(196,133,90,0.45);
+}
 
-    /* ==================== Resto de estilos (sin cambios) ==================== */
-    .btn {
-      display: inline-block;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
-    }
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeDown 0.8s 0.6s ease both;
+}
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    }
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeDown 1s 1s ease both;
+}
 
-    .btn:active {
-      transform: translateY(1px) scale(0.97);
-    }
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
 
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.25);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-      opacity: 0;
-    }
+/* ===================== HEADER / NAV ===================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  padding: 0 5%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
 
-    .btn:active::after {
-      width: 400px;
-      height: 400px;
-      opacity: 1;
-    }
+.site-header.scrolled {
+  background: rgba(42,58,46,0.97);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.25);
+}
 
-    button[type="submit"] {
-      background: var(--gray-dark);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 1.3rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+}
 
-    button[type="submit"]:hover {
-      background: var(--black);
-      transform: translateY(-3px);
-    }
+.logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
 
-    .btn-whatsapp { background: #25D366; color: white; }
-    .btn-terminos { background: #34495e; color: white; }
-    .btn-blue { background: #3498db; color: white; }
-    .btn-green { background: #27ae60; color: white; }
+.logo-tag {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 
-    .pack-card {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: all 0.4s ease;
-    }
+/* HAMBURGER X */
+.ham-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.3s;
+  z-index: 10001;
+  position: relative;
+}
 
-    .pack-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    }
+.ham-btn:hover { background: rgba(255,255,255,0.2); }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 1rem;
-      border: 1px solid var(--gray-light);
-      border-radius: 10px;
-      background: var(--white);
-      transition: all 0.3s ease;
-    }
+.ham-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.68,-0.6,0.32,1.6);
+  transform-origin: center;
+}
 
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: var(--gray);
-      box-shadow: 0 0 0 4px rgba(74,74,74,0.12);
-      transform: scale(1.02);
-    }
+.ham-btn.active .ham-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
 
-    img {
-      max-width: 100%;
-      border-radius: 12px;
-      transition: transform 0.4s ease;
-    }
+.ham-btn.active .ham-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
 
-    img:hover {
-      transform: scale(1.03);
-    }
+.ham-btn.active .ham-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
-    .form-section {
-      background: var(--beige-dark);
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+/* MOBILE NAV DRAWER */
+.nav-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: min(360px, 90vw);
+  height: 100vh;
+  background: #2a3a2e;
+  z-index: 10000;
+  padding: 90px 40px 40px;
+  transform: translateX(105%);
+  transition: transform 0.45s cubic-bezier(0.77,0,0.175,1);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-    .about {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+.nav-drawer.open {
+  transform: translateX(0);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.4);
+}
 
-    .about ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.12rem;
-      line-height: 2;
-      display: inline-block;
-      text-align: center;
-      margin: 1.5rem auto;
-    }
+.nav-drawer a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
 
-    .about li {
-      margin: 8px 0;
-    }
+.nav-drawer a:hover {
+  color: #f5c89a;
+  padding-left: 8px;
+}
 
-    main { max-width: 1100px; margin: 0 auto; padding: 3rem 5%; }
-    section { margin-bottom: 5rem; }
-    h2 { font-size: 2.4rem; color: var(--gray-dark); margin-bottom: 1.5rem; text-align: center; }
-    .intro { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
-    .intro p { font-size: 1.2rem; margin-bottom: 1.5rem; }
-    .highlight { color: var(--gray-dark); font-weight: 600; }
+.nav-drawer a .nav-icon {
+  font-size: 1.3rem;
+  width: 32px;
+  text-align: center;
+}
 
-    footer {
-      background: var(--white);
-      text-align: center;
-      padding: 2.5rem 1rem;
-      margin-top: 4rem;
-      border-top: 1px solid var(--gray-light);
-      color: var(--gray);
-    }
-  /* ==================== MANGOLANGO - GATO CON SENTIMIENTOS ==================== */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  backdrop-filter: blur(3px);
+}
+
+.nav-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===================== SECTIONS ===================== */
+main { overflow: hidden; }
+
+section {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1.2rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--terra);
+  border-radius: 2px;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+h2.section-title.center { text-align: center; }
+
+/* ===================== DESTINATION IMAGE ===================== */
+.destination-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destination-img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+}
+
+.destination-img-wrap img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.6s ease;
+}
+
+.destination-img-wrap:hover img {
+  transform: scale(1.04);
+}
+
+.destination-img-wrap::after {
+  content: '🏔️ Bariloche, Argentina';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(42,42,42,0.85);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+.destination-text .section-label { margin-top: 0; }
+
+.destination-text p {
+  font-size: 1.12rem;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.destination-text p strong { color: var(--charcoal); }
+
+/* ===================== PRIZES ===================== */
+.prizes-bg {
+  background: linear-gradient(135deg, #2a3a2e 0%, #3a5a40 100%);
+  padding: 100px 5%;
+  margin: 0;
+  max-width: 100%;
+}
+
+.prizes-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prizes-bg .section-label { color: #f5c89a; }
+.prizes-bg .section-label::before { background: #f5c89a; }
+.prizes-bg h2.section-title { color: #fff; }
+
+.main-prize {
+  background: linear-gradient(135deg, rgba(245,200,154,0.15), rgba(255,255,255,0.08));
+  border: 1px solid rgba(245,200,154,0.3);
+  border-radius: 24px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-prize::before {
+  content: '🏆';
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: 120px;
+  opacity: 0.07;
+}
+
+.main-prize-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f5c89a;
+  margin-bottom: 12px;
+}
+
+.main-prize h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.main-prize p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem;
+}
+
+.jbl-img-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.jbl-img-wrap img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.extra-prizes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.prize-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.98rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.prize-pill:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+  border-color: rgba(245,200,154,0.3);
+}
+
+.prize-pill .prize-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* ===================== PAYMENT SECTION ===================== */
+.payment-section {
+  padding: 100px 5%;
+  background: var(--cream-dark);
+}
+
+.payment-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.payment-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.07);
+}
+
+.payment-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  color: var(--charcoal);
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--sand);
+  gap: 16px;
+}
+
+.data-row:last-child { border-bottom: none; }
+
+.data-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--mid);
+  flex-shrink: 0;
+}
+
+.data-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  text-align: right;
+}
+
+.alert-box {
+  background: #fff3e0;
+  border-left: 4px solid var(--terra);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+/* ===================== FORM ===================== */
+.form-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.07);
+}
+
+.form-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  color: var(--charcoal);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid var(--sand);
+  border-radius: 12px;
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--charcoal);
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--forest);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(58,90,64,0.1);
+}
+
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+/* ===================== BUTTONS ===================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 34px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::after { opacity: 1; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(0,0,0,0.2); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary { background: var(--terra); color: #fff; }
+.btn-forest { background: var(--forest); color: #fff; }
+.btn-wsp { background: #25D366; color: #fff; }
+.btn-light {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
+}
+.btn-submit {
+  background: linear-gradient(135deg, var(--forest), var(--forest-light));
+  color: #fff;
+  width: 100%;
+  padding: 18px;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(58,90,64,0.35);
+}
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(58,90,64,0.4);
+}
+
+.btn-blue { background: #3498db; color: #fff; }
+.btn-green { background: #27ae60; color: #fff; }
+.btn-terms { background: #34495e; color: #fff; }
+
+/* ===================== ABOUT / TEAM ===================== */
+.about-section {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.team-card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s;
+}
+
+.team-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+
+.team-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--terra), var(--forest));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto 14px;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--charcoal);
+}
+
+.team-role {
+  font-size: 0.8rem;
+  color: var(--mid);
+  margin-top: 4px;
+}
+
+/* ===================== COURSE PHOTO ===================== */
+.course-photo-wrap {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  margin: 40px 0;
+}
+
+.course-photo-wrap img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+/* ===================== LINKS CTA SECTION ===================== */
+.cta-links {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cta-link-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: var(--charcoal);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+  border: 1.5px solid transparent;
+  transition: all 0.35s;
+}
+
+.cta-link-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--terra);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.cta-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-dark);
+  border-radius: 16px;
+}
+
+.cta-text h4 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.cta-text p {
+  font-size: 0.88rem;
+  color: var(--mid);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: #1e2e22;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 48px 5%;
+}
+
+footer a { color: #f5c89a; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+footer .footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+footer p { font-size: 0.9rem; line-height: 2; }
+
+/* ===================== MANGOLANGO ===================== */
 .mango-bubble {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 72px;
-  height: 72px;
+  bottom: 28px;
+  right: 28px;
+  width: 68px;
+  height: 68px;
   background: linear-gradient(135deg, #ff9800, #ff5722);
   border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(255, 152, 0, 0.5);
+  box-shadow: 0 12px 35px rgba(255,152,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 99999;
-  font-size: 42px;
-  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  border: 5px solid #fff;
+  font-size: 38px;
+  transition: all 0.4s cubic-bezier(0.68,-0.6,0.32,1.6);
+  border: 4px solid #fff;
+  animation: bounceIn 0.8s 2s ease both;
 }
 
-.mango-bubble:hover {
-  transform: scale(1.15) rotate(15deg);
-}
+.mango-bubble:hover { transform: scale(1.18) rotate(12deg); }
 
 .chat-window {
   position: fixed;
-  bottom: 110px;
-  right: 25px;
-  width: 390px;
-  max-height: 560px;
+  bottom: 114px;
+  right: 28px;
+  width: 380px;
+  max-height: 540px;
   background: #fff;
   border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
   overflow: hidden;
   display: none;
   flex-direction: column;
   z-index: 100000;
-  border: 4px solid #ff9800;
+  border: 3px solid #ff9800;
+  animation: scaleIn 0.35s ease;
 }
 
 .chat-window.open { display: flex; }
 
 .chat-header {
   background: linear-gradient(90deg, #ff9800, #ff5722);
-  color: white;
+  color: #fff;
   padding: 18px 20px;
   display: flex;
   align-items: center;
   gap: 14px;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
 }
 
 .chat-header .cat-avatar {
-  width: 48px;
-  height: 48px;
-  background: #fff;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-}
-
-.message {
-  max-width: 85%;
-  padding: 14px 18px;
-  border-radius: 20px;
-  font-size: 1.06rem;
-  line-height: 1.55;
-}
-
-.message.bot {
-  align-self: flex-start;
-  background: #fff9f0;
-  border-bottom-left-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.message.user {
-  align-self: flex-end;
-  background: #ff9800;
-  color: white;
-  border-bottom-right-radius: 6px;
+  font-size: 26px;
 }
 
 .chat-body {
@@ -365,11 +925,33 @@
   background: #fffaf0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+}
+
+.message {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: #fff;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #ff9800;
+  color: #fff;
+  border-bottom-right-radius: 4px;
 }
 
 .chat-footer {
-  padding: 14px;
+  padding: 12px;
   background: #fff;
   border-top: 1px solid #ffe0b2;
   display: flex;
@@ -378,334 +960,525 @@
 
 .chat-footer input {
   flex: 1;
-  border: 2px solid #ffcc80;
+  border: 1.5px solid #ffcc80;
   border-radius: 30px;
-  padding: 14px 20px;
-  font-size: 1.05rem;
+  padding: 12px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.chat-footer input:focus {
+  outline: none;
+  border-color: #ff9800;
 }
 
 .chat-footer button {
   background: #ff9800;
-  color: white;
+  color: #fff;
   border: none;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  font-size: 26px;
+  font-size: 22px;
   cursor: pointer;
+  flex-shrink: 0;
 }
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0); }
+  60% { transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .destination-block { grid-template-columns: 1fr; gap: 36px; }
+  .destination-img-wrap img { height: 300px; }
+  .main-prize { grid-template-columns: 1fr; gap: 24px; }
+  .payment-inner { grid-template-columns: 1fr; }
+  .cta-links-grid { grid-template-columns: 1fr; }
+  .extra-prizes { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .extra-prizes { grid-template-columns: 1fr; }
+  .chat-window { width: calc(100vw - 20px); right: 10px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+}
+```
+
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
-      <div>
-        <div class="logo">CrazyMangu</div>
-        <div class="tagline">Rifa Gira a Brasil</div>
-      </div>
+  <!-- ========== FIXED HEADER ========== -->
 
-      <!-- Hamburguesa - Solo 2 líneas (centro y abajo) -->
-      <label class="hamburger">
-        <input type="checkbox" id="menu-toggle">
-        <span></span>
-        <span></span>
-      </label>
+  <header class="site-header" id="site-header">
+    <div class="logo-wrap">
+      <div class="logo-name">Mangu</div>
+      <div class="logo-tag">Rifa Gira a Bariloche</div>
     </div>
 
- <!-- Menú móvil -->
-<nav id="mobile-menu">
-  <a href="../">🏠 Inicio</a>
-  <a href="como-participar/">📋 Cómo Participar</a>
-  <a href="como-vender/">👥 Manual para Vendedores</a>
-  <a href="terminos/">📜 Términos y Condiciones</a>
-  <a href="mangolango.html">🐱 Hablar con MangoLango</a>
-</nav>
+```
+<button class="ham-btn" id="ham-btn" aria-label="Abrir menú">
+  <span class="ham-line"></span>
+  <span class="ham-line"></span>
+  <span class="ham-line"></span>
+</button>
+```
+
   </header>
 
+  <!-- NAV OVERLAY -->
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- NAV DRAWER -->
+
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="../"><span class="nav-icon">🏠</span> Inicio</a>
+    <a href="como-participar/"><span class="nav-icon">📋</span> Cómo Participar</a>
+    <a href="como-vender/"><span class="nav-icon">👥</span> Manual para Vendedores</a>
+    <a href="terminos/"><span class="nav-icon">📜</span> Términos y Condiciones</a>
+    <a href="mangolango.html"><span class="nav-icon">🐱</span> Hablar con MangoLango</a>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+
+  <section class="hero">
+    <div class="hero-badge">✈️ Gira de Estudio 2025</div>
+    <h1>
+      Rifa Solidaria
+      <span>Gira a Bariloche 🏔️</span>
+    </h1>
+    <p class="hero-sub">
+      Organizado por <strong>Mangu</strong> junto al curso de 1° Medio B del Colegio Nahuelcura. ¡Tu ayuda nos lleva a la montaña!
+    </p>
+    <div class="hero-price">
+      Cada número cuesta <strong>$1.000 CLP</strong>
+    </div>
+    <div class="hero-date">
+      🗓️ Sorteo: 15 de mayo de 2025
+    </div>
+    <div class="hero-btns">
+      <a href="#participar" class="btn btn-primary">🎟️ Participar ahora</a>
+      <a href="terminos/" class="btn btn-light">📜 Ver Términos</a>
+    </div>
+
+```
+<div class="scroll-hint">
+  <div class="scroll-line"></div>
+  scroll
+</div>
+```
+
+  </section>
+
   <main>
-    <!-- Todo tu contenido se mantiene igual desde aquí -->
-    <section class="intro">
-      <h2>¡Apóyanos a ir de gira de estudio a Brasil!</h2>
-      <p>Organizado por <strong>CrazyMangu</strong> junto al curso de 1° Medio B del Colegio Nahuelcura. Necesitamos fondos para nuestra gira de estudio a Brasil.</p>
-      <p class="highlight">Cada número de la rifa cuesta <strong>$1.000 CLP</strong>.</p>
-      <p>¡Tu ayuda nos lleva a Brasil! 🇧🇷</p>
-      <p style="font-style:italic; color:var(--gray-dark); margin-top:1.5rem;">
-        Creada y gestionada por <strong>Vicente Moreno</strong>, alumno de 1° Medio B y fundador de CrazyMangu.
-      </p>
-    </section>
 
-    <section>
-      <h2>Así será nuestra gira de estudio</h2>
-      <img src="https://media.viajando.travel/p/eac87816bfa072f915763178e40424bf/adjuntos/236/imagenes/000/866/0000866210/1200x675/smart/balneario-camboriu.jpg"
-           alt="Gira de estudio a Brasil">
-    </section>
-
-    <section>
-      <h2>Colores del JBL Go 3</h2>
-      <img src="https://i.ytimg.com/vi/jjCejstFlkQ/maxresdefault.jpg"
-           alt="JBL Go 3 en diferentes colores">
-    </section>
-
-    <section>
-      <h2>Premios de la rifa</h2>
-      <div class="packs">
-        <div class="pack-card">
-          <h3>🏆 Premio Principal</h3>
-          <div class="pack-price">JBL Go 3</div>
-          <p>Parlante portátil impermeable + Set de toallas</p>
-        </div>
-        <div class="pack-card">
-          <h3>🎁 Premios Adicionales</h3>
-          <p style="margin-bottom:1.5rem;">Se sortearán entre los participantes según la cantidad de números vendidos:</p>
-          <ul>
-            <li>✅ Giftcard de $20.000 en Cencosud</li>
-            <li>✅ Kit de aseo</li>
-            <li>✅ Sesión de spa</li>
-            <li>✅ Combo 3 completos italianos + bebida 1.5 Lt</li>
-            <li>✅ Set de ollas</li>
-            <li>✅ Palomera</li>
-            <li>✅ Termo Stanley</li>
-            <li>✅ Audífonos AirPods</li>
-            <li>✅ Teclado inalámbrico + mouse</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div style="text-align: center; margin: 65px 0 75px 0; padding: 0 20px;">
-      <a href="terminos/" class="btn btn-terminos">
-        📜 Ver Términos y Condiciones
-      </a>
-    </div>
-
-    <section style="background:#fff; padding:2rem; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.08); max-width:700px; margin:0 auto 3rem;">
-      <h2 style="text-align:center;">Datos para transferir</h2>
-      <p style="text-align:center; font-size:1.15rem; margin:1.5rem 0;">
-        <strong>Nombre:</strong> Vicente Moreno<br>
-        <strong>RUT:</strong> 23.568.213-3<br>
-        <strong>Banco:</strong> Banco BCI Mach<br>
-        <strong>Tipo de cuenta:</strong> Cuenta Corriente<br>
-        <strong>Número de cuenta:</strong> 777923568213<br>
-        <strong>Correo:</strong> crazymangu2026@gmail.com
-      </p>
-      <p style="text-align:center; color:#d32f2f; font-weight:600;">
-        Una vez realizada la transferencia, envía el pantallazo por WhatsApp.
-      </p>
-    </section>
-
-    <section class="form-section">
-      <h2>¡Participa en la rifa!</h2>
-      <p style="text-align:center; margin-bottom:1.8rem; font-size:1.12rem; line-height:1.6;">
-        Cada número cuesta <strong>$1.000 CLP</strong>.<br><br>
-        Puedes pagar en <strong>efectivo</strong> (con un vendedor del curso) o por <strong>transferencia bancaria</strong>.
-      </p>
-
-      <div style="text-align:center; margin:2.5rem 0;">
-        <a href="https://wa.me/56939276187" target="_blank" class="btn btn-whatsapp">
-          📲 Enviar comprobante por WhatsApp
-        </a>
-      </div>
-
-      <form action="https://formsubmit.co/crazymangu2026@gmail.com"
-            method="POST"
-            onsubmit="setTimeout(() => { window.location.href = 'gracias/'; }, 800);">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo...">
-        <label for="rut">RUT</label>
-        <input type="text" id="rut" name="rut" required placeholder="Ej: 12.345.678-9">
-        <label for="telefono">Teléfono / WhatsApp</label>
-        <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +56 9 1234 5678">
-        <label for="numeros">Cantidad de números</label>
-        <input type="text" id="numeros" name="numeros" required placeholder="Ej: 5 números">
-        <label for="metodo_pago">¿Cómo vas a pagar?</label>
-        <select id="metodo_pago" name="metodo_pago" required>
-          <option value="">Selecciona una opción</option>
-          <option value="Efectivo">💵 Efectivo (a un vendedor del curso)</option>
-          <option value="Transferencia">🏦 Transferencia bancaria</option>
-        </select>
-        <label for="comprobante">Comprobante o comentario (opcional)</label>
-        <textarea id="comprobante" name="comprobante" rows="3"
-                  placeholder="Si pagaste y quieres un numero personalizado ponlo por aqui..."></textarea>
-        <input type="hidden" name="_subject" value="Nueva participación Rifa Gira Brasil - CrazyMangu">
-        <input type="hidden" name="_captcha" value="false">
-        <button type="submit">Enviar datos de participación</button>
-      </form>
-    </section>
-
-    <section class="about">
-      <h2>Sobre Nosotros</h2>
-      <p style="text-align: center; font-size: 1.15rem; max-width: 800px; margin: 0 auto 2rem;">
-        Somos el curso de <strong>1° Medio B</strong> del Colegio Nahuelcura.
-        Estamos organizando esta rifa solidaria para poder financiar nuestra gira de estudio a Brasil.
-        ¡Tu apoyo nos ayuda a hacer realidad este sueño! 🇧🇷
-      </p>
-
-      <div style="text-align: center; margin: 2rem 0;">
-        <img src="img/4063aa7f-d596-49ba-a722-571c086d9e91.jpg"
-             alt="Foto del curso">
-      </div>
-
-      <h2>Representantes del curso</h2>
-      <ul>
-        <li>Antonella González</li>
-        <li>Antonella Carvallo</li>
-        <li>Sebastián Morales</li>
-        <li>Maximo Camilo</li>
-        <li>Catalina Díaz</li>
-        <li>Emilio Aguilera</li>
-        <li><strong>Vicente Moreno</strong> – Creador y gestor de CrazyMangu</li>
-      </ul>
-      <p style="margin-top:2rem;">Todo el curso agradece tu apoyo para hacer posible esta gira de estudio.</p>
-    </section>
-
-    <div style="text-align: center; margin: 30px 0 40px 0; padding: 0 20px;">
-      <a href="como-participar/" class="btn btn-blue" style="margin-bottom: 15px; display: block;">
-        📋 Cómo Participar (detallado)
-      </a>
-      <a href="como-vender/" class="btn btn-green" style="display: block;">
-        👥 Manual para Vendedores (compañeros)
-      </a>
-    </div>
-  </main>
-
-  <footer>
-    <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187">+56 9 3927 6187</a></p>
-    <p style="margin-top:1rem;">© 2026 CrazyMangu - Todos los derechos reservados</p>
-  </footer>
-<!-- ==================== MANGOLANGO - GATO CON SENTIMIENTOS ==================== -->
-<div class="mango-bubble" id="mango-bubble" title="¡Habla con MangoLango! 🐱">🐱</div>
-
-<div class="chat-window" id="chat-window">
-  <div class="chat-header">
-    <div class="cat-avatar">🐱</div>
-    <div>MangoLango</div>
-    <button class="close-btn" id="close-chat" style="margin-left:auto; background:none; border:none; font-size:28px; color:white; cursor:pointer;">✕</button>
+```
+<!-- ========== DESTINATION ========== -->
+<div class="destination-block reveal">
+  <div class="destination-img-wrap">
+    <img src="https://media.viajando.travel/p/eac87816bfa072f915763178e40424bf/adjuntos/236/imagenes/000/866/0000866210/1200x675/smart/balneario-camboriu.jpg"
+         alt="Gira de estudio a Bariloche">
   </div>
-  
-  <div class="chat-body" id="chat-body">
-    <!-- Mensajes se agregan automáticamente -->
-  </div>
-  
-  <div class="chat-footer">
-    <input type="text" id="chat-input" placeholder="Pregúntame lo que quieras... 🐾" autocomplete="off">
-    <button id="send-btn">🐾</button>
+  <div class="destination-text">
+    <div class="section-label">Nuestro destino</div>
+    <h2 class="section-title">Así será nuestra gira de estudio</h2>
+    <p>Vamos a vivir una experiencia increíble con todo el curso de <strong>1° Medio B</strong>. Bariloche nos espera con sus paisajes de montaña, lagos y aventura.</p>
+    <p>Cada número que compras nos acerca más a hacer realidad este viaje que recordaremos toda la vida. <strong>¡Tu apoyo cuenta!</strong></p>
+    <p style="font-style:italic; color:var(--mid);">Creada y gestionada por <strong>Vicente Moreno</strong>, alumno de 1° Medio B y fundador de Mangu.</p>
   </div>
 </div>
+
+<!-- ========== PRIZES ========== -->
+<div class="prizes-bg">
+  <div class="prizes-inner reveal">
+    <div class="section-label">Lo que puedes ganar</div>
+    <h2 class="section-title" style="color:#fff;">Premios de la rifa</h2>
+
+    <div class="main-prize">
+      <div>
+        <div class="main-prize-label">🏆 Premio Principal</div>
+        <h3>JBL Go 4</h3>
+        <p>Parlante portátil impermeable de última generación + Set de toallas. ¡El parlante más buscado del momento!</p>
+      </div>
+      <div class="jbl-img-wrap">
+        <img src="https://i.ytimg.com/vi/jjCejstFlkQ/maxresdefault.jpg"
+             alt="JBL Go 4 en diferentes colores">
+      </div>
+    </div>
+
+    <div class="extra-prizes">
+      <div class="prize-pill"><span class="prize-icon">🎁</span> Giftcard $20.000 Cencosud</div>
+      <div class="prize-pill"><span class="prize-icon">🧴</span> Kit de aseo</div>
+      <div class="prize-pill"><span class="prize-icon">💆</span> Sesión de spa</div>
+      <div class="prize-pill"><span class="prize-icon">🌭</span> Combo 3 completos + bebida 1.5L</div>
+      <div class="prize-pill"><span class="prize-icon">🍳</span> Set de ollas</div>
+      <div class="prize-pill"><span class="prize-icon">🍿</span> Palomera</div>
+      <div class="prize-pill"><span class="prize-icon">♨️</span> Termo Stanley</div>
+      <div class="prize-pill"><span class="prize-icon">🎧</span> Audífonos AirPods</div>
+      <div class="prize-pill"><span class="prize-icon">⌨️</span> Teclado inalámbrico + mouse</div>
+    </div>
+
+    <p style="color:rgba(255,255,255,0.55); font-size:0.9rem; margin-top:24px; text-align:center;">
+      * Los premios adicionales se sortearán según la cantidad de números vendidos.
+    </p>
+  </div>
+</div>
+
+<!-- ========== PAYMENT + FORM ========== -->
+<div class="payment-section" id="participar">
+  <div class="payment-inner">
+
+    <div class="reveal">
+      <div class="section-label">Datos para pagar</div>
+      <h2 class="section-title" style="margin-bottom: 24px;">Transferencia bancaria</h2>
+      <div class="payment-card">
+        <h3>Datos de Vicente Moreno</h3>
+        <div class="data-row">
+          <span class="data-label">Nombre</span>
+          <span class="data-value">Vicente Moreno</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">RUT</span>
+          <span class="data-value">23.568.213-3</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Banco</span>
+          <span class="data-value">BCI Mach</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Tipo</span>
+          <span class="data-value">Cuenta Corriente</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">N° Cuenta</span>
+          <span class="data-value">777923568213</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Correo</span>
+          <span class="data-value">crazymangu2026@gmail.com</span>
+        </div>
+        <div class="alert-box">
+          📲 Una vez realizada la transferencia, envía el comprobante por WhatsApp.
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="https://wa.me/56939276187" target="_blank" class="btn btn-wsp">
+            📲 Enviar comprobante
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.2s">
+      <div class="section-label">Regístrate</div>
+      <h2 class="section-title" style="margin-bottom: 24px;">¡Participa en la rifa!</h2>
+      <div class="form-card">
+        <h3>Datos de participación</h3>
+        <form action="https://formsubmit.co/crazymangu2026@gmail.com"
+              method="POST"
+              onsubmit="setTimeout(() => { window.location.href = 'gracias/'; }, 800);">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo...">
+          </div>
+          <div class="form-group">
+            <label for="rut">RUT</label>
+            <input type="text" id="rut" name="rut" required placeholder="Ej: 12.345.678-9">
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +56 9 1234 5678">
+          </div>
+          <div class="form-group">
+            <label for="numeros">Cantidad de números</label>
+            <input type="text" id="numeros" name="numeros" required placeholder="Ej: 5 números">
+          </div>
+          <div class="form-group">
+            <label for="metodo_pago">¿Cómo vas a pagar?</label>
+            <select id="metodo_pago" name="metodo_pago" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Efectivo">💵 Efectivo (a un vendedor del curso)</option>
+              <option value="Transferencia">🏦 Transferencia bancaria</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comprobante">Comprobante o comentario (opcional)</label>
+            <textarea id="comprobante" name="comprobante" placeholder="Si pagaste y quieres un número personalizado ponlo por aquí..."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="Nueva participación Rifa Gira Bariloche - Mangu">
+          <input type="hidden" name="_captcha" value="false">
+          <button type="submit" class="btn btn-submit">🎟️ Enviar datos de participación</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== TERMS BUTTON ========== -->
+<div style="text-align:center; padding: 60px 5%;" class="reveal">
+  <a href="terminos/" class="btn btn-terms" style="font-size:1.05rem;">
+    📜 Ver Términos y Condiciones
+  </a>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<div class="about-section reveal">
+  <div class="section-label">Quiénes somos</div>
+  <h2 class="section-title center">Sobre Nosotros</h2>
+  <p style="text-align:center; font-size:1.12rem; max-width:700px; margin: 0 auto 36px; color:var(--mid); line-height:1.8;">
+    Somos el curso de <strong style="color:var(--charcoal)">1° Medio B</strong> del Colegio Nahuelcura. Estamos organizando esta rifa solidaria para financiar nuestra gira de estudio a Bariloche. ¡Tu apoyo nos ayuda a hacer realidad este sueño! 🏔️
+  </p>
+
+  <div class="course-photo-wrap">
+    <img src="img/4063aa7f-d596-49ba-a722-571c086d9e91.jpg" alt="Foto del curso 1° Medio B">
+  </div>
+
+  <h2 class="section-title center" style="margin-top:60px;">Representantes del curso</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">👩</div>
+      <div class="team-name">Antonella González</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👩</div>
+      <div class="team-name">Antonella Carvallo</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨</div>
+      <div class="team-name">Sebastián Morales</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨</div>
+      <div class="team-name">Maximo Camilo</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👩</div>
+      <div class="team-name">Catalina Díaz</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨</div>
+      <div class="team-name">Emilio Aguilera</div>
+      <div class="team-role">Representante</div>
+    </div>
+    <div class="team-card" style="border: 2px solid var(--terra);">
+      <div class="team-avatar" style="background: linear-gradient(135deg, #c4855a, #a36544);">⭐</div>
+      <div class="team-name">Vicente Moreno</div>
+      <div class="team-role" style="color:var(--terra); font-weight:600;">Fundador Mangu</div>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:32px; color:var(--mid);">Todo el curso agradece tu apoyo para hacer posible esta gira de estudio. 🙏</p>
+</div>
+
+<!-- ========== CTA LINKS ========== -->
+<div class="cta-links reveal">
+  <div class="section-label">Más información</div>
+  <h2 class="section-title" style="margin-bottom:28px;">Páginas útiles</h2>
+  <div class="cta-links-grid">
+    <a href="como-participar/" class="cta-link-card">
+      <div class="cta-icon">📋</div>
+      <div class="cta-text">
+        <h4>Cómo Participar</h4>
+        <p>Guía detallada paso a paso para comprar tus números</p>
+      </div>
+    </a>
+    <a href="como-vender/" class="cta-link-card">
+      <div class="cta-icon">👥</div>
+      <div class="cta-text">
+        <h4>Manual para Vendedores</h4>
+        <p>Guía para compañeros que quieren ayudar a vender</p>
+      </div>
+    </a>
+    <a href="terminos/" class="cta-link-card">
+      <div class="cta-icon">📜</div>
+      <div class="cta-text">
+        <h4>Términos y Condiciones</h4>
+        <p>Lee las bases y condiciones de la rifa</p>
+      </div>
+    </a>
+    <a href="mangolango.html" class="cta-link-card">
+      <div class="cta-icon">🐱</div>
+      <div class="cta-text">
+        <h4>Hablar con MangoLango</h4>
+        <p>Nuestro gato asistente responde tus dudas</p>
+      </div>
+    </a>
+  </div>
+</div>
+```
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+
+  <footer>
+    <div class="footer-logo">Mangu</div>
+    <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187">+56 9 3927 6187</a></p>
+    <p style="margin-top:8px;">© 2026 Mangu — Todos los derechos reservados</p>
+    <p style="margin-top:6px;">Sorteo: <strong style="color:#f5c89a;">15 de mayo de 2025</strong></p>
+  </footer>
+
+  <!-- ========== MANGOLANGO ========== -->
+
+  <div class="mango-bubble" id="mango-bubble" title="¡Habla con MangoLango! 🐱">🐱</div>
+
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <div class="cat-avatar">🐱</div>
+      <div>MangoLango</div>
+      <button id="close-chat" style="margin-left:auto; background:none; border:none; font-size:26px; color:white; cursor:pointer; line-height:1;">✕</button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="Pregúntame lo que quieras... 🐾" autocomplete="off">
+      <button id="send-btn">🐾</button>
+    </div>
+  </div>
+
   <script>
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-
-    toggle.addEventListener('change', function() {
-      if (this.checked) {
-        menu.classList.add('show');
-      } else {
-        menu.classList.remove('show');
-      }
+    // ===== HEADER SCROLL =====
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('header')) {
-        toggle.checked = false;
-        menu.classList.remove('show');
-      }
+    // ===== HAMBURGER MENU =====
+    const hamBtn = document.getElementById('ham-btn');
+    const navDrawer = document.getElementById('nav-drawer');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    function openMenu() {
+      hamBtn.classList.add('active');
+      navDrawer.classList.add('open');
+      navOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      hamBtn.classList.remove('active');
+      navDrawer.classList.remove('open');
+      navOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    hamBtn.addEventListener('click', () => {
+      navDrawer.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.checked = false;
-        menu.classList.remove('show');
+    navOverlay.addEventListener('click', closeMenu);
+
+    navDrawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // ===== SCROLL REVEAL =====
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ===== MANGOLANGO CHAT =====
+    const bubble = document.getElementById('mango-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const chatBody = document.getElementById('chat-body');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const closeBtn = document.getElementById('close-chat');
+
+    function addMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = `message ${type}`;
+      div.innerHTML = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getReply(msg) {
+      const m = msg.toLowerCase();
+      if (m.includes("hola") || m.includes("buenos")) return "¡Miau miau! 🐱 ¡Hola humano lindo! Soy MangoLango, el gato oficial de la rifa. ¿Viniste a ayudarnos a llegar a Bariloche?";
+      if (m.includes("comprar") || m.includes("número") || m.includes("participar") || m.includes("1000") || m.includes("mil")) return "¡SÍÍÍÍ! 🐱💃 ¡Me pongo feliz como loco! Cada número cuesta $1.000 CLP. ¿Cuántos quieres? ¡Más números = más chances de ganar el JBL Go 4!";
+      if (m.includes("bariloche") || m.includes("gira") || m.includes("viaje")) return "¡BARILOCHE! 🏔️🐱 ¡Me emociono tanto que quiero saltar por la habitación! Vamos con todo el curso 1° Medio B. Tu ayuda es muy importante.";
+      if (m.includes("sorteo") || m.includes("fecha") || m.includes("cuando") || m.includes("cuándo")) return "¡El sorteo es el 15 de mayo de 2025! 🗓️ Anótalo en tu calendario. ¡Ya falta poco!";
+      if ((m.includes("no") && (m.includes("quiero") || m.includes("interesa"))) || m.includes("no voy")) return "¡Miau... 😿 Eso me pone triste. ¿Seguro que no quieres ayudar aunque sea con un número?";
+      if (m.includes("premio") || m.includes("jbl")) return "¡El premio principal es el JBL Go 4 impermeable + un set de toallas! 🏆 Hay muchos más: giftcard de $20.000, spa, completos, termo Stanley, AirPods... ¡Todo depende de cuántos números se vendan!";
+      if (m.includes("pago") || m.includes("transferencia") || m.includes("datos") || m.includes("rut")) return "Puedes pagar por transferencia a Vicente Moreno o en efectivo con un vendedor. ¡Los datos están más abajo en la página! No olvides enviar el pantallazo por WhatsApp. 📲";
+      return "¡Miau! 🐱 Estoy pensando como gato listo 🧠. Cuéntame más para poder ayudarte con la rifa o la gira a Bariloche.";
+    }
+
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      chatInput.value = '';
+      setTimeout(() => addMessage(getReply(text), 'bot'), 600);
+    }
+
+    bubble.addEventListener('click', () => {
+      chatWindow.classList.add('open');
+      bubble.style.display = 'none';
+      if (!chatBody.children.length) {
+        addMessage("¡Miau! 🐱 Hola, soy MangoLango. ¡Estoy muy feliz de que estés aquí! ¿Quieres ayudar al curso a ir a Bariloche?", 'bot');
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      chatWindow.classList.remove('open');
+      bubble.style.display = 'flex';
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+    document.addEventListener('click', e => {
+      if (!chatWindow.contains(e.target) && e.target !== bubble && chatWindow.classList.contains('open')) {
+        chatWindow.classList.remove('open');
+        bubble.style.display = 'flex';
+      }
     });
   </script>
-<script>
-// ==================== MANGOLANGO - GATO CON SENTIMIENTOS Y EMOCIONES ====================
-const bubble = document.getElementById('mango-bubble');
-const chatWindow = document.getElementById('chat-window');
-const chatBody = document.getElementById('chat-body');
-const input = document.getElementById('chat-input');
-const sendBtn = document.getElementById('send-btn');
-const closeBtn = document.getElementById('close-chat');
 
-let conversationHistory = [];
-
-function getEmotionalResponse(userMessage) {
-  const msg = userMessage.toLowerCase();
-  let response = "";
-
-  if (msg.includes("hola") || msg.includes("qué tal") || msg.includes("buenos días")) {
-    response = "¡Miau miau! 🐱 ¡Hola humano lindo! Soy MangoLango, el gato oficial de la rifa. ¿Viniste a ayudarnos a llegar a Brasil?";
-  } 
-  else if (msg.includes("comprar") || msg.includes("número") || msg.includes("participar") || msg.includes("1000") || msg.includes("mil")) {
-    response = "¡SÍÍÍÍ! 🐱💃 ¡Me pongo feliz como loco cuando alguien quiere comprar números! Cada número cuesta $1000 CLP. ¿Cuántos quieres comprar? ¡Mientras más, más chances de ganar el JBL Go 3!";
-  } 
-  else if (msg.includes("brasil") || msg.includes("gira") || msg.includes("viaje")) {
-    response = "¡BRASIL! 🇧🇷🐱 ¡Me emociono tanto que quiero saltar por toda la habitación! Vamos con todo el curso 1° Medio B. Tu ayuda es muy importante para que esto sea posible.";
-  } 
-  else if ((msg.includes("no") && (msg.includes("quiero") || msg.includes("interesa") || msg.includes("no me"))) || msg.includes("no voy")) {
-    response = "¡Miau... 😿 Eso me pone un poquito triste y enojado (pero enojado de gato, no de verdad). ¿Seguro que no quieres ayudar aunque sea con un número al curso?";
-  } 
-  else if (msg.includes("premio") || msg.includes("jbl")) {
-    response = "¡El premio principal es el JBL Go 3 impermeable más un set de toallas! 🏆 Hay muchos premios más: giftcard de $20.000, spa, completos, termo Stanley, AirPods... ¡Todo depende de cuántos números se vendan!";
-  }
-  else if (msg.includes("pago") || msg.includes("transferencia") || msg.includes("datos") || msg.includes("rut")) {
-    response = "Puedes pagar por transferencia a Vicente Moreno o en efectivo con un vendedor del curso. Los datos están más abajo en la página. ¡No olvides enviar el pantallazo por WhatsApp!";
-  }
-  else {
-    response = "¡Miau! 🐱 Entiendo lo que dices... Estoy pensando como gato listo 🧠. Cuéntame más para poder ayudarte mejor con la rifa o la gira a Brasil.";
-  }
-
-  return response;
-}
-
-function addMessage(text, type) {
-  const msgDiv = document.createElement('div');
-  msgDiv.className = `message ${type}`;
-  msgDiv.innerHTML = text;
-  chatBody.appendChild(msgDiv);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-function sendMessage() {
-  const text = input.value.trim();
-  if (!text) return;
-
-  addMessage(text, 'user');
-  input.value = '';
-
-  setTimeout(() => {
-    const botReply = getEmotionalResponse(text);
-    addMessage(botReply, 'bot');
-  }, 650);
-}
-
-// Eventos
-bubble.addEventListener('click', () => {
-  chatWindow.classList.add('open');
-  bubble.style.display = 'none';
-  
-  if (chatBody.children.length === 0) {
-    addMessage("¡Miau! 🐱 Hola, soy MangoLango. Estoy muy feliz de que estés aquí. ¿Quieres ayudar al curso a ir a Brasil?", 'bot');
-  }
-});
-
-closeBtn.addEventListener('click', () => {
-  chatWindow.classList.remove('open');
-  bubble.style.display = 'flex';
-});
-
-sendBtn.addEventListener('click', sendMessage);
-input.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') sendMessage();
-});
-
-document.addEventListener('click', (e) => {
-  if (!chatWindow.contains(e.target) && e.target !== bubble && chatWindow.classList.contains('open')) {
-    chatWindow.classList.remove('open');
-    bubble.style.display = 'flex';
-  }
-});
-</script>
 </body>
 </html>
